@@ -1,0 +1,45 @@
+{
+	"name": "mwstake/mediawiki-component-vueplus",
+	"description": "Provides VueJS components for use in MediaWiki extensions and skins",
+	"license": "GPL-3.0-only",
+	"authors": [
+		{
+			"name": "BlueSpice",
+			"email": "support@bluespice.com"
+		}
+	],
+	"require": {
+		"mwstake/mediawiki-componentloader": "~1",
+		"mwstake/mediawiki-component-thirdpartyresources": "~1"
+	},
+	"require-dev": {
+		"jakub-onderka/php-parallel-lint": "1.0.0",
+		"jakub-onderka/php-console-highlighter": "0.4.0",
+		"mediawiki/mediawiki-codesniffer": "29.0.0",
+		"mediawiki/minus-x": "1.0.0",
+		"phpunit/phpunit": "^6.5"
+	},
+	"autoload": {
+		"psr-4": {
+			"MWStake\\MediaWiki\\Component\\VuePlus\\": "src/",
+			"MWStake\\MediaWiki\\Component\\VuePlus\\Tests\\": "tests/phpunit/"
+		},
+		"files": [
+			"bootstrap.php"
+		]
+	},
+	"scripts": {
+		"unittest": [
+			"vendor/phpunit/phpunit/phpunit --configuration .phpunit.xml"
+		],
+		"test": [
+			"parallel-lint . --exclude vendor --exclude node_modules",
+			"minus-x check .",
+			"phpcs -sp"
+		],
+		"fix": [
+			"minus-x fix .",
+			"phpcbf"
+		]
+	}
+}
